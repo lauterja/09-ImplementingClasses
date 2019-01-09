@@ -48,7 +48,7 @@ class Point(object):
         self.x = x
         self.y = y
         self.moves_made = 0
-        self.p =
+        self.p = Point({}, {})
 
     def __repr__(self):
         return 'Point({}, {})'.format(self.x, self.y)
@@ -70,6 +70,7 @@ class Point(object):
         return self.moves_made
 
     def get_distance_from(self, ):
+        distance = self.p - self.p
 
 
 def run_test_init():
