@@ -48,7 +48,9 @@ class Point(object):
         self.x = x
         self.y = y
         self.moves_made = 0
-        self.p = Point({}, {})
+        self.xpoint = x
+        self.ypoint = y
+        self.distance = 0
 
     def __repr__(self):
         return 'Point({}, {})'.format(self.x, self.y)
@@ -69,9 +71,24 @@ class Point(object):
     def get_number_of_moves_made(self):
         return self.moves_made
 
-    def get_distance_from(self, ):
-        distance = self.p - self.p
+    def get_distance_from(self):
+        return(((Point.x - self.x) ** 2 + (Point.y - self.y) ** 2) **(1/2))
 
+    def get_distance_from_start(self):
+        return(((self.xpoint - self.x) ** 2 + (self.ypoint - self.y) ** 2) **(1/2))
+
+    def get_distance_traveled(self):
+        return self.distance
+
+    def closer_to(self, point1, point2):
+        if Point.get_distance_from(self, point1) > Point.get_distance_from(self, point2):
+            return point2
+        else:
+            return point1
+
+    def halfway_to(self, point2):
+        halfway_point = Point((self.x +point2.x)/2, (self.y + point2.y)/2)
+        return halfway_point
 
 def run_test_init():
     """
@@ -564,9 +581,9 @@ def run_test_get_number_of_moves_made():
         print('Actual for p2 moves made:  ', p2.get_number_of_moves_made())
     """
     # -------------------------------------------------------------------------
-    # TODO: 8.  Follow the same instructions as in _TODO_ 3 above,
+    # DONE: 8.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_number_of_moves_made  method specified above.
-    # TODO (continued):  HINT: What must a Point REMEMBER for this method?
+    # DONE (continued):  HINT: What must a Point REMEMBER for this method?
     # -------------------------------------------------------------------------
     print()
     print('-----------------------------------------------------------')
@@ -680,7 +697,7 @@ def run_test_get_distance_from():
         print('Actual   p2 to p4:', p2.get_distance_from(p4))
     """
     # -------------------------------------------------------------------------
-    # TODO: 9.  Follow the same instructions as in _TODO_ 3 above,
+    # DONE: 9.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_distance_from  method specified above.
     # -------------------------------------------------------------------------
     print()
@@ -773,7 +790,7 @@ def run_test_get_distance_from_start():
         print('Actually is:', p2.get_distance_from_start())
     """
     # -------------------------------------------------------------------------
-    # TODO: 10.  Follow the same instructions as in _TODO_ 3 above,
+    # DONE: 10.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_distance_from_START  method specified above.
     # -------------------------------------------------------------------------
     print()
@@ -827,7 +844,7 @@ def run_test_get_distance_traveled():
         print('Actual:', p4.get_distance_traveled())
     """
     # -------------------------------------------------------------------------
-    # TODO: 11.  Follow the same instructions as in _TODO_ 3 above,
+    # DONE: 11.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_distance_traveled  method specified above.
     # -------------------------------------------------------------------------
     print()
@@ -884,7 +901,7 @@ def run_test_closer_to():
         print('Actual:  ', p1.closer_to(p4, p5) is p5)
     """
     # -------------------------------------------------------------------------
-    # TODO: 12.  Follow the same instructions as in TO-DO 3 above,
+    # DONE: 12.  Follow the same instructions as in TO-DO 3 above,
     #    but for the  closer_to  method specified above.
     # -------------------------------------------------------------------------
     print()
@@ -940,7 +957,7 @@ def run_test_halfway_to():
 
     """
     # -------------------------------------------------------------------------
-    # TODO: 13.  Follow the same instructions as in TO-DO 3 above,
+    # DONE: 13.  Follow the same instructions as in TO-DO 3 above,
     #    but for the  halfway_to  method specified above.
     # -------------------------------------------------------------------------
     print()
